@@ -1,0 +1,77 @@
+html, body{
+  /* text-align: center; */
+  height: 100%;
+  margin: 0;
+}
+
+
+form{
+  margin-top: 3%;
+}
+
+.form-horizontal .control-label{
+    /* text-align:right; */
+    text-align:left;
+
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.form-error {
+  border: 2px solid #e74c3c;
+}
+
+#bg{
+ height: 100%;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-image: url("/images/bg.jpg");
+}
+
+.section{
+  width: 100%;
+}
+
+#sec1{
+  margin-top: 3%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+#buttom{
+    padding: 0;
+    margin:0;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    text-align: center;
+    background-color: #2a3132;
+    /* margin-top: 25%; */
+}
+
+.form-control{
+  background-color:#dce1de;
+}
+
+footer{
+    margin:0;
+    padding: 0;
+}
+
+.writing {
+  text-align: right;
+}
+
+option {
+  direction: rtl;
+}
+
+select{
+  direction: rtl;
+}
+
+.inpwriting {
+  direction: rtl;
+}
