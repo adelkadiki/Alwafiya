@@ -15,7 +15,7 @@ class Package extends Model
      */
 
     protected $fillable = [
-        'shipment_id', 'customer', 'custid', 'phone', 'description', 'recepient', 'recpphone', 'dimentions',
+        'shipment_id', 'customer', 'custid', 'phone', 'email', 'description', 'recepient', 'recpphone', 'dimentions',
         'street', 'city', 'postcode', 'quantity', 'weight'
     ];
 

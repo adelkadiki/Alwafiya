@@ -90,6 +90,12 @@
                      </div>
 
                      <div class="form-group">
+                         <label >Cost</label>
+                         <input type="number" step="any" class="form-control" id="cost" name="cost" value="{{$package->cost}}"
+                         @if($errors->has('cost')) style="border: 2px solid #e74c3c;" @endif>
+                     </div>
+
+                     <div class="form-group">
                        <lable>Packge status</label>
                      <select class="form-control" name="status">
                        <option value="Request" @if($package->status=='Request' or $package->status=='Launched') selected @endif >Request</option>

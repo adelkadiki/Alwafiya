@@ -11,14 +11,14 @@
   <thead class="thead-dark" style="text-align:center;">
 
 <tr>
-<th>Package ID</th><th>Customer name</th><th>Customer phone</th><th>Number of packages</th>
+<th>Package ID</th><th>Customer name</th><th>Customer phone</th>
 </tr>
 
   </thead>
   <tbody style="text-align:center;">
 <tr>
 @foreach($package as $pack)
-<td>{{$pack->id}}</td><td>{{$pack->customer}}</td><td>{{$pack->phone}}</td><td>{{$pack->quantity}}</td>
+<td>{{$pack->id}}</td><td>{{$pack->customer}}</td><td>{{$pack->phone}}</td>
 @endforeach
 </tr>
 </tbody>
@@ -68,14 +68,14 @@
   <thead class="thead-dark" style="text-align:center;">
 
 <tr>
-<th>Recpient name</th><th>Recepient phone</th><th>Status</th>
+<th>Recipient name</th><th>Recipient phone</th><th>Status</th><th>Cost</th>
 </tr>
 
   </thead>
   <tbody style="text-align:center;">
 <tr>
 @foreach($package as $pack)
-<td>{{$pack->recepient}}</td><td>{{$pack->recpphone}}</td><td>{{$pack->status}}</td>
+<td>{{$pack->recepient}}</td><td>{{$pack->recpphone}}</td><td>{{$pack->status}}</td><td>{{$pack->cost}}</td>
 @endforeach
 </tr>
 </tbody>
@@ -88,3 +88,4 @@
 
 
 @endsection
+

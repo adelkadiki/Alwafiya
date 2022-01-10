@@ -20,7 +20,7 @@
 
   <div class="form-group">
    <label >Cost</label>
-   <input type="text" class="form-control" id="cost" name="cost" value="{{$pack->cost}}"/>
+   <input type="number" step="0.01" class="form-control" id="cost" name="cost" value="{{$pack->cost}}"/>
   </div>
 <input type="submit" value="Submit"  class="btn btn-primary"/>
 </form>

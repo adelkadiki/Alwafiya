@@ -6,15 +6,15 @@
 <br>
 <br>
 <br>
-<h5 class="writing">الرجاء إدخال رقم تتبع الشحنة الخاصة بك</h5>
-
 @if(session()->has('message'))
 <div class="alert alert-primary writing" role="alert">{{session()->get('message')}}</div>
 @endif
 
 @if($errors->any())
-<h5 class="alert alert-danger writing">يرجى كتابة رقم الطرد</h5>
+<div class="alert alert-danger writing">يرجى كتابة رقم الطرد</div>
 @endif
+
+<h5 class="writing">الرجاء إدخال رقم تتبع الشحنة الخاصة بك</h5>
 
 <form method="get" action="/trackpack">
   @csrf

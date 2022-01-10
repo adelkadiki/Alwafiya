@@ -29,6 +29,6 @@ class ContactForm extends Mailable
     public function build()
     {
       //  return $this->view('view.name');
-        return $this->from("noReply@londonbg.co.uk")->subject('Contact form')-> view('webpages.contactus')->with('info', $this->info);
+        return $this->from("noReply@alwafiya.com")->subject('Contact form')-> view('webpages.contactus')->with('info', $this->info);
     }
 }

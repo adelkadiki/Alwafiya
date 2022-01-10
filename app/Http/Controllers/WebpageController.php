@@ -136,7 +136,7 @@ class WebpageController extends Controller
     }
 
     public function editship(Shipment $shipment){
-      //dd($shipment->date);
+    
       return view('system.editship')->with(compact('shipment'));
     }
 
@@ -144,13 +144,21 @@ class WebpageController extends Controller
       $updated = DB::table('shipments')->where('id','=', $req->id);
       $updated->update(['date'=>$req->date]);
       return redirect('/mainpage');
-    //dd($req->id);
+    
     }
 
     public function packupdate(Request $req){
 
+     
+      
+      $cost = floatval($req->cost);
+      
       $package = Package::find($req->id);
+      $package->cost = $cost;
+      $package->save();
+      //$package->update(['cost'=>$cost]);
       $package->fill($req->all())->save();
+      
         return view('system.mainpage');
     }
 
@@ -208,17 +216,25 @@ class WebpageController extends Controller
     }
 
     public function submitemail(Request $req){
-    //
-      $package = Package::find($req->id);
-      $package->update(['cost'=>$req->cost]);
-      $email = $package->email;
+    
+      $fcost = floatval($req->cost);
+     //dd(gettype($fcost));
+       
+     $package = Package::find($req->id);
+     $package->cost = $fcost;
+     $package->save(); 
+    //   $package->update(['cost'=>$req->cost]);
+     //   $package->update(['cost'=>$fcost]);
+    // DB::table('packages')->where('id', $req->id)->update(['cost'=>$fcost]);
+     //DB::table('packages')->update(['cost'=>DB::row($fcost)]);
+       $email = $package->email;
 
        if($email==null){
 
-       return back()->with('message', 'Clinet has no email');
+       return back()->with('message', 'The cost is added to system, no email sent because this clinet has no email');
      }else {
 
-      $info =  array('name'=> $package->customer , 'id'=>$package->id, 'cost'=>$package->cost );
+      $info =  array('name'=> $package->customer , 'id'=>$package->id, 'cost'=>$fcost);
       Mail::to($package->email)->send(new InfoEmail($info));
       return view('system.mainpage');
     }
@@ -236,8 +252,10 @@ class WebpageController extends Controller
 
       public function departpacklist(Shipment $shipment){
         $packages= DB::table('packages')->where('shipment_id', '=', $shipment->id)->get();
-        session()->put('shipment_id', $shipment->id);
-        session()->put('link', '/departpacklist/');
+       
+        // session()->put('shipment_id', $shipment->id);
+        //session()->put('link', '/departpacklist/');
+        session()->put(['shipment_date'=>$shipment->date, 'shipment_dest'=>$shipment->destination, 'shipment_id'=>$shipment->id, 'link'=>'/departpacklist/']);
         return view('system.departpacklist')->with(compact('packages'));;
       }
 
@@ -286,9 +304,11 @@ class WebpageController extends Controller
       }
 
       public function deliverysubmit(Request $req){
-
+      
         $package = Package::find($req->id);
-        $package->update(['status'=>$req->status]);
+        $package->status = $req->status;
+        $package->save();
+        //$package->update(['status'=>$req->status]);
         $id = session('shipment_id');
         return Redirect::route('arrived.pack', $id);
       }
@@ -377,10 +397,14 @@ class WebpageController extends Controller
          'message.required' => 'يرجي كتابة الرسالة التي ترغب أن تبعثها للشركة'
        ]);
 
-
-        $info =  array('name'=> $req->name , 'email'=>$req->email, 'message'=>$req->message );
-        Mail::to("info@londonbg.co.uk")->send(new ContactForm($info));
-        return back()->with('message', 'Thank you for your message we will contact you as soon as possible');
+         $name = $req->name;
+         $message = $req->message;
+         $mailFrom = $req->email;
+                  
+         mail("info@alwafiya.com", $name, $message, "From: $mailFrom\r\n");
+        // $info =  array('name'=> $req->name , 'email'=>$req->email, 'message'=>$req->message );
+        // Mail::to("info@alwafiya.com")->send(new ContactForm($info));
+         return back()->with('message', 'Thank you for your message we will contact you as soon as possible');
 
       }
 

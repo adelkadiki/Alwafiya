@@ -15,6 +15,7 @@
   <option value="">Select destination</option>
   <option value="Tripoli" {{ old('destination')=='Tripoli' ? 'selected' : ''  }} >Tripoli</option>
   <option value="Benghazi" {{ old('destination')=='Benghazi' ? 'selected' : ''  }}>Benghazi</option>
+  
 </select>
 
 </div>

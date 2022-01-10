@@ -71,14 +71,14 @@
   <thead class="thead-dark" style="text-align:center;">
 
 <tr>
-<th>Recpient name</th><th>Recepient phone</th><th>Status</th>
+<th>Recpient name</th><th>Recepient phone</th><th>Status</th><th>Cost</th>
 </tr>
 
   </thead>
   <tbody style="text-align:center;">
 <tr>
 @foreach($package as $pack)
-<td>{{$pack->recepient}}</td><td>{{$pack->recpphone}}</td><td>{{$pack->status}}</td>
+<td>{{$pack->recepient}}</td><td>{{$pack->recpphone}}</td><td>{{$pack->status}}</td><td>{{$pack->cost}}</td>
 @endforeach
 </tr>
 </tbody>
